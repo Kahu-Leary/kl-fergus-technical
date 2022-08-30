@@ -18,14 +18,7 @@ export default function Home() {
     dispatch(
       jobRemoved(router.query.id)
     )
-    console.log(job.jobID)
-    console.log(router.query.id)
-    // console.log(selectJobById(jobs, router.query.id).jobID)
   }
-
-  useEffect(() => {
-    console.log(showModal)
-  }, [showModal])
 
   return (
     <div>

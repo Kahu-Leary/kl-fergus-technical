@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { jobEdited, selectJobById} from '../../redux/jobsSlice'
+import { wrapper } from '../../redux/store';
 import { TWJobDataHighlight } from '../../components/JobListItem/styles'
 import { TWSingleJobBackBtn, TWJobDetailsContainer, TWJobDetails, TWJobPageContainer } from '../../components/StylesBase'
 
@@ -25,6 +26,8 @@ function SingleJob() {
   const onClientNameChange = e => setClientName(e.target.value)
   const onClientEmailChange = e => setClientEmail(e.target.value)
   const onClientPhoneNumberChange = e => setClientPhoneNumber(e.target.value)
+
+  // console.log('State on render', useStore().getState(), props);
 
   // useEffect(() => {
     // setJobStatus(job.status)
@@ -158,3 +161,18 @@ function SingleJob() {
 }
 
 export default SingleJob
+
+export const getServerSideProps = wrapper.getServerSideProps(store => async ({params}) => {
+    const {id} = params;
+
+    const storeResult = store.getState()
+    // console.log('State on server', store.getState());
+    // console.log('params', params);
+
+    return {
+        props: {
+            storeResult,
+            id,
+        },
+    };
+});

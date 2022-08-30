@@ -1,4 +1,5 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { HYDRATE } from 'next-redux-wrapper'
 
 const initialState = [
     {
@@ -104,12 +105,18 @@ const jobsSlice = createSlice({
             associatedJob.notes = updatedNotes
         }
     },
+    extraReducers: {
+        [HYDRATE]: (state, action) => {
+            console.log('HYDRATE', action.payload);
+            return [
+                ...state,
+            ]
+        }
+    },
 });
 
 export const selectAllJobs = state => state.jobs;
-
 export const selectJobById = (state, jobId) => state.find(job => job.jobID === jobId);
-
 export const { jobAdded, jobRemoved, jobEdited, addJobNote, deleteJobNote } = jobsSlice.actions
 
 export default jobsSlice.reducer
