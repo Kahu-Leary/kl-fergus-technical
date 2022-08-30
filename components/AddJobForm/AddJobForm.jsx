@@ -68,7 +68,7 @@ const AddJobForm = ({ setShowModal }) => {
             setClientPhoneNumber('')
             setShowModal(false)
         } else {
-            if (isValid) alert('Please check all fields are correct')
+            if (isValid) alert('Please check all fields are correct\nNOTE: email must contain a valid email pattern value such as test@test.com')
         }
     } else {
         alert('Please fill all fields')
