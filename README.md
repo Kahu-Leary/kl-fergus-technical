@@ -23,14 +23,18 @@ React Icons
 ## File Structure Overview
 Starting from the root of the project the four main folders - components, pages, redux, styles.
 
+
 Each component/folder within the components directory holds a styles directory for all the associated tailwind/styled components, a JSX file of the same name which contains the component itself and an index.js file used to export the JSX
 with the exception of "StylesBase" which is only used for generic styles not associated with any particular component and lastly you'll find the index.js file used to export all components.
+
 
 Under pages you will find all routes/page components, index.js contains the home page, you can filter/add/delete jobs as you see fit from here while the job/[id].js contains the template page for the job details view.
 In the details view you can edit the job as well as add/delete notes.
 
+
 The redux folder holds all the logic for state managment in the app, under jobSlice.js you can find all the initial data and the reducers used to update it accordingly.
 The store.js file sets up the store and next-redux-wrapper to then be used on the main app component under /pages/_app.js to provide the state.
+
 
 And styles you can find some basic css files used on the pages
 
