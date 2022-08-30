@@ -106,8 +106,7 @@ const jobsSlice = createSlice({
         }
     },
     extraReducers: {
-        [HYDRATE]: (state, action) => {
-            console.log('HYDRATE', action.payload);
+        [HYDRATE]: (state) => {
             return [
                 ...state,
             ]
